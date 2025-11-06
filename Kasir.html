@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kasir Sederhana</title>
+</head>
+<body>
+  <h2>Program Kasir Sederhana</h2>
+
+  <label for="harga">Harga Barang (Rp):</label><br>
+  <input type="number" id="harga"><br><br>
+
+  <label for="jumlah">Jumlah Barang:</label><br>
+  <input type="number" id="jumlah"><br><br>
+
+  <button onclick="prosesKasir()">Hitung Total</button><br><br>
+
+  <div id="output"></div>
+
+  <script>
+    function prosesKasir() {
+      let harga = parseFloat(document.getElementById("harga").value);
+      let jumlah = parseInt(document.getElementById("jumlah").value);
+      let total = harga * jumlah;
+      let diskon = 0;
+
+      if (total > 100000) {
+        diskon = total * 0.10;
+      }
+
+      let totalBayar = total - diskon;
+
+      document.getElementById("output").innerHTML =
+        "<p>Total Belanja: Rp " + total.toLocaleString() + "</p>" +
+        "<p>Diskon: Rp " + diskon.toLocaleString() + "</p>" +
+        "<p><strong>Total Bayar: Rp " + totalBayar.toLocaleString() + "</strong></p>";
+    }
+  </script>
+</body>
+</html>
